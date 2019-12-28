@@ -1,25 +1,48 @@
 <template>
-  <nav class="the-header">
-    <n-link class="title" to="/">
-      Qiita Offline Viewer
-    </n-link>
-    <button class="close">
-      <span class="icon" />
-    </button>
-  </nav>
+  <div>
+    <nav class="the-header">
+      <n-link class="title" to="/">
+        Qiita Offline Viewer
+      </n-link>
+      <button class="close" @click.prevent="openDrawerMenu">
+        <span class="icon" />
+      </button>
+    </nav>
+    <TheHeaderDrawer v-if="drawerMenuVisibility" @close="closeDrawerMenu" />
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import TheHeaderDrawer from '@/components/TheHeaderDrawer.vue';
 
-  @Component
+  @Component({
+    components: {
+      TheHeaderDrawer
+    }
+  })
 export default class TheHeader extends Vue {
+  /** ドロワーメニューの表示状態 */
+  drawerMenuVisibility = false;
+
+  /** ドロワーメニューを開く */
+  openDrawerMenu(): void {
+    this.drawerMenuVisibility = true;
+  }
+
+  /** ドロワーメニューを閉じる */
+  closeDrawerMenu(): void {
+    this.drawerMenuVisibility = false;
+  }
 }
 </script>
 
 <style lang="scss" scoped>
   .the-header {
     & {
+      position: fixed;
+      top: 0;
+      left: 0;
       display: flex;
       align-items: center;
       justify-content: space-between;

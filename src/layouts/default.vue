@@ -1,6 +1,6 @@
 <template>
   <div class="layout-container">
-    <TheHeader class="header" />
+    <TheHeader />
     <div class="content">
       <nuxt />
     </div>
@@ -26,10 +26,12 @@ export default class DefaultLayout extends Vue {
       padding-top: 48px;
     }
 
-    & > .header {
-      position: fixed;
-      top: 0;
-      left: 0;
+    & > .content {
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 608px;
+      padding: 0 12px;
+      margin: 0 auto;
     }
   }
 </style>
