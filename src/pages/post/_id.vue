@@ -1,19 +1,22 @@
 <template>
-  <div>
-    <h1>hello you</h1>
-    <p>{{ postId }}</p>
-    <VArticle v-if="post" :html="post.rendered_body" />
+  <div class="page-container">
+    <template v-if="post">
+      <VArticleHeader class="header" :post="post" />
+      <VArticle :html="post.rendered_body" />
+    </template>
   </div>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'nuxt-property-decorator';
   import VArticle from "@/components/VArticle.vue";
+  import VArticleHeader from "@/components/VArticleHeader.vue";
   import {IQiitaPost} from "@/types/qiita";
 
   @Component({
     components: {
-      VArticle
+      VArticle,
+      VArticleHeader
     }
   })
   export default class PostDetail extends Vue {
@@ -32,5 +35,14 @@
   }
 </script>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
+  .page-container {
+    & {
+      padding-top: 32px;
+    }
+
+    & > .header {
+      margin-bottom: 32px;
+    }
+  }
 </style>

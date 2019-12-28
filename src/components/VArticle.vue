@@ -1,5 +1,5 @@
 <template>
-  <div class="v-article" v-html="html" />
+  <section class="v-article" v-html="html" />
 </template>
 
 <script lang="ts">
