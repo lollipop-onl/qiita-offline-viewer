@@ -5,16 +5,22 @@
       :src="post.user.profile_image_url"
       :alt="post.user.name"
     >
-    <div class="title">{{ post.title }}</div>
-    <div class="author">by {{ post.user.name || post.user.id }}</div>
-    <div class="datetime">{{ datetime }}</div>
+    <div class="title">
+      {{ post.title }}
+    </div>
+    <div class="author">
+      by {{ post.user.name || post.user.id }}
+    </div>
+    <div class="datetime">
+      {{ datetime }}
+    </div>
   </n-link>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'nuxt-property-decorator';
-import dayjs from 'dayjs';
-import { IQiitaPost } from '@/types/qiita';
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import dayjs from 'dayjs'
+import { IQiitaPost } from '@/types/qiita'
 
 @Component
 export default class VPost extends Vue {
@@ -23,12 +29,12 @@ export default class VPost extends Vue {
   post!: IQiitaPost;
 
   /** 投稿日時 */
-  get datetime(): string {
+  get datetime (): string {
     return dayjs(this.post.created_at).format('YYYY/MM/DD HH:mm')
   }
 
   /** ポストのURL */
-  get postUrl(): string {
+  get postUrl (): string {
     return `/post/${this.post.id}`
   }
 }

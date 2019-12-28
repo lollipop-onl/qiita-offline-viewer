@@ -1,8 +1,8 @@
 <template>
   <label class="search-field">
     <input
-      v-bind="$attrs"
       v-model="reactiveValue"
+      v-bind="$attrs"
       type="text"
       class="field"
     >
@@ -12,25 +12,25 @@
 </template>
 
 <script lang="ts">
-  import { Component, Model, Vue } from 'nuxt-property-decorator';
+import { Component, Model, Vue } from 'nuxt-property-decorator'
 
   @Component({
     inheritAttrs: false
   })
-  export default class SearchField extends Vue {
+export default class SearchField extends Vue {
     /** 入力値 */
     @Model('input', { type: String, required: true })
     value!: string;
 
     /** リアクティブな入力値 */
-    get reactiveValue(): string {
-      return this.value;
+    get reactiveValue (): string {
+      return this.value
     }
 
-    set reactiveValue(value: string) {
-      this.$emit('input', value);
+    set reactiveValue (value: string) {
+      this.$emit('input', value)
     }
-  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -72,8 +72,8 @@
     }
 
     & > .field {
-      width: 100%;
       box-sizing: border-box;
+      width: 100%;
       padding-left: 42px;
       font-size: 14px;
       line-height: 24px;
@@ -84,7 +84,7 @@
 
     & > .field:focus ~ .icon,
     & > .field:not(:placeholder-shown) ~ .icon {
-      border-color: $_qiita
+      border-color: $_qiita;
     }
 
     & > .field:focus ~ .icon::before,

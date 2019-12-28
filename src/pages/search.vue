@@ -31,11 +31,11 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'nuxt-property-decorator';
-  import VHeading from "@/components/VHeading.vue";
-  import SearchField from "@/components/SearchField.vue";
-  import VPost from "@/components/VPost.vue";
-  import {IQiitaPost} from "@/types/qiita";
+import { Component, Vue } from 'nuxt-property-decorator'
+import VHeading from '@/components/VHeading.vue'
+import SearchField from '@/components/SearchField.vue'
+import VPost from '@/components/VPost.vue'
+import { IQiitaPost } from '@/types/qiita'
 
   @Component({
     components: {
@@ -44,7 +44,7 @@
       VPost
     }
   })
-  export default class SearchPage extends Vue {
+export default class SearchPage extends Vue {
     /** キーワードの入力値 */
     keywordValue = '';
 
@@ -55,9 +55,9 @@
     searchResult: IQiitaPost[] = [];
 
     /** 検索を実行する */
-    async search(): Promise<void> {
+    async search (): Promise<void> {
       if (!this.keywordValue) {
-        return;
+        return
       }
 
       this.searchResult = await this.$axios.$get('/items', {
@@ -66,9 +66,9 @@
         }
       })
 
-      this.searchKeyword = this.keywordValue;
+      this.searchKeyword = this.keywordValue
     }
-  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -76,9 +76,9 @@
     & > .empty {
       margin-top: 80px;
       font-size: 16px;
-      text-align: center;
-      color: rgba($_text, 0.6);
       line-height: 1.5;
+      color: rgba($_text, 0.6);
+      text-align: center;
     }
   }
 </style>

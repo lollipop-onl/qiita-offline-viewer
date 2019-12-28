@@ -1,6 +1,8 @@
 @import 'reset.css';
 @import 'vars/color';
 
-body, input, button {
+body,
+input,
+button {
   color: $_text;
 }

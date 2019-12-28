@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import TheHeaderDrawer from '@/components/TheHeaderDrawer.vue';
+import TheHeaderDrawer from '@/components/TheHeaderDrawer.vue'
 
   @Component({
     components: {
@@ -26,13 +26,13 @@ export default class TheHeader extends Vue {
   drawerMenuVisibility = false;
 
   /** ドロワーメニューを開く */
-  openDrawerMenu(): void {
-    this.drawerMenuVisibility = true;
+  openDrawerMenu (): void {
+    this.drawerMenuVisibility = true
   }
 
   /** ドロワーメニューを閉じる */
-  closeDrawerMenu(): void {
-    this.drawerMenuVisibility = false;
+  closeDrawerMenu (): void {
+    this.drawerMenuVisibility = false
   }
 }
 </script>
@@ -43,10 +43,10 @@ export default class TheHeader extends Vue {
       position: fixed;
       top: 0;
       left: 0;
+      box-sizing: border-box;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-sizing: border-box;
       width: 100%;
       height: 48px;
       padding: 0 18px;

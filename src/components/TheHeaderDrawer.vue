@@ -25,22 +25,22 @@
 </template>
 
 <script lang="ts">
-  import { Component, Emit, Vue } from 'nuxt-property-decorator';
+import { Component, Emit, Vue } from 'nuxt-property-decorator'
 
   @Component
-  export default class TheHeaderDrawer extends Vue {
-    /** メニューリスト */
-    get menuList() {
-      return [
-        { title: 'フィード', url: '/' },
-        { title: '検索', url: '/search' },
-        { title: '保存したポスト', url: '/saved' }
-      ]
-    }
+export default class TheHeaderDrawer extends Vue {
+  /** メニューリスト */
+  get menuList () {
+    return [
+      { title: 'フィード', url: '/' },
+      { title: '検索', url: '/search' },
+      { title: '保存したポスト', url: '/saved' }
+    ]
+  }
 
     /** closeするイベントを送る */
-    @Emit() close(): void {}
-  }
+    @Emit() close (): void {}
+}
 </script>
 
 <style lang="scss" scoped>
@@ -59,8 +59,8 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(#000, 0.5);
       cursor: pointer;
+      background: rgba(#000, 0.5);
     }
   }
 

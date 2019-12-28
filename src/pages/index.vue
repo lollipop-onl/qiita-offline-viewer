@@ -11,8 +11,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import VHeading from "@/components/VHeading.vue";
-import VPost from "@/components/VPost.vue";
+import VHeading from '@/components/VHeading.vue'
+import VPost from '@/components/VPost.vue'
 
 @Component({
   components: {
@@ -23,10 +23,10 @@ import VPost from "@/components/VPost.vue";
 export default class IndexPage extends Vue {
   posts: any[] = [];
 
-  async mounted() {
-    const data = await this.$axios.$get('/items');
+  async mounted () {
+    const data = await this.$axios.$get('/items')
 
-    this.posts = data;
+    this.posts = data
   }
 }
 </script>

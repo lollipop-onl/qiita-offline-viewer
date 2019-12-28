@@ -10,4 +10,4 @@ const plugin: Plugin = ({ $axios }) => {
   $axios.onResponseError(logger.log)
 }
 
-export default plugin;
+export default plugin
