@@ -1,15 +1,33 @@
 <template>
   <div>
-    <h1>This is a sample project</h1>
-    <p>Welcome to the sample project page!</p>
+    <VHeading>フィード</VHeading>
+    <VPost
+      v-for="post in posts"
+      :key="post.id"
+      :post="post"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
+import VHeading from "@/components/VHeading.vue";
+import VPost from "@/components/VPost.vue";
 
-@Component
+@Component({
+  components: {
+    VHeading,
+    VPost
+  }
+})
 export default class IndexPage extends Vue {
+  posts: any[] = [];
+
+  async mounted() {
+    const data = await this.$axios.$get('/items');
+
+    this.posts = data;
+  }
 }
 </script>
 

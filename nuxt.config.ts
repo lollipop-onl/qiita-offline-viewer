@@ -11,8 +11,15 @@ const config: Configuration = {
     '@nuxt/typescript-build'
   ],
   modules: [
+    '@nuxtjs/axios',
     '@nuxtjs/style-resources'
   ],
+  plugins: [
+    '@/plugins/axios-logger'
+  ],
+  axios: {
+    baseURL: 'https://qiita.com/api/v2'
+  },
   styleResources: {
     scss: [
       '@/assets/styles/vars/*.scss'

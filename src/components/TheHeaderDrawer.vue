@@ -5,14 +5,18 @@
         <span class="icon" />
       </button>
       <ul class="menu-list">
-        <li class="item">
-          <n-link class="link" to="/">フィード</n-link>
-        </li>
-        <li class="item">
-          <n-link class="link" to="/search">検索</n-link>
-        </li>
-        <li class="item">
-          <n-link class="link" to="/offline">保存したポスト</n-link>
+        <li
+          v-for="menu in menuList"
+          :key="menu.url"
+          class="item"
+        >
+          <n-link
+            class="link"
+            :to="menu.url"
+            @click.native="close"
+          >
+            {{ menu.title }}
+          </n-link>
         </li>
       </ul>
     </div>
@@ -25,6 +29,15 @@
 
   @Component
   export default class TheHeaderDrawer extends Vue {
+    /** メニューリスト */
+    get menuList() {
+      return [
+        { title: 'フィード', url: '/' },
+        { title: '検索', url: '/search' },
+        { title: '保存したポスト', url: '/saved' }
+      ]
+    }
+
     /** closeするイベントを送る */
     @Emit() close(): void {}
   }

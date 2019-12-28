@@ -17,16 +17,17 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
+      "@/*": [
         "src/*"
       ],
-      "@/*": [
+      "~/*": [
         "src/*"
       ]
     },
     "types": [
       "@types/node",
-      "@nuxt/types"
+      "@nuxt/types",
+      "@nuxtjs/axios"
     ]
   },
   "exclude": [
