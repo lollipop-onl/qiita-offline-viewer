@@ -43,6 +43,7 @@ export default class TheHeader extends Vue {
       position: fixed;
       top: 0;
       left: 0;
+      z-index: 1;
       box-sizing: border-box;
       display: flex;
       align-items: center;
