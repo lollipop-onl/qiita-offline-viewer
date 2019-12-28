@@ -24,6 +24,7 @@ export default class DefaultLayout extends Vue {
   .layout-container {
     & {
       padding-top: 48px;
+      overflow: hidden;
     }
 
     & > .content {

@@ -51,6 +51,7 @@ export default class TheHeaderDrawer extends Vue {
       right: 0;
       bottom: 0;
       left: 0;
+      z-index: 1;
     }
 
     & > .foundation {
@@ -70,7 +71,7 @@ export default class TheHeaderDrawer extends Vue {
       top: 0;
       right: 0;
       z-index: 1;
-      width: 300px;
+      width: 240px;
       height: 100%;
       background: $_white;
     }

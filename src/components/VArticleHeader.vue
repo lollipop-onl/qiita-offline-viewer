@@ -1,18 +1,5 @@
 <template>
   <div class="v-article-header">
-    <h1 class="title">
-      {{ post.title }}
-    </h1>
-    <div class="tags">
-      <a
-        v-for="tag in post.tags"
-        :key="tag.name"
-        class="item"
-        :href="`https://qiita.com/tags/${tag.name}`"
-      >
-        {{ tag.name }}
-      </a>
-    </div>
     <div class="author">
       <img
         class="avatar"
@@ -25,6 +12,19 @@
       <div class="datetime">
         {{ datetime }}
       </div>
+    </div>
+    <h1 class="title">
+      {{ post.title }}
+    </h1>
+    <div class="tags">
+      <a
+        v-for="tag in post.tags"
+        :key="tag.name"
+        class="item"
+        :href="`https://qiita.com/tags/${tag.name}`"
+      >
+        {{ tag.name }}
+      </a>
     </div>
   </div>
 </template>
@@ -65,6 +65,39 @@ export default class VArticleHeader extends Vue {
       font-size: 40px;
       font-weight: bold;
       line-height: 1.4;
+      word-break: break-all;
+    }
+
+    & > .author {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    & > .author > .avatar {
+      width: 32px;
+      height: 32px;
+      margin-right: 6px;
+      border-radius: 2px;
+    }
+
+    & > .author > .username {
+      font-size: 14px;
+      line-height: 1.5;
+      color: $_text;
+      text-decoration: none;
+    }
+
+    & > .author > .username:hover {
+      text-decoration: underline;
+    }
+
+    & > .author > .datetime {
+      margin-left: auto;
+      font-size: 12px;
+      line-height: 1.2;
+      color: rgba($_text, 0.6);
+      text-align: right;
     }
 
     & > .tags {
@@ -72,6 +105,7 @@ export default class VArticleHeader extends Vue {
     }
 
     & > .tags > .item {
+      display: inline-block;
       padding: 4px 8px;
       margin-bottom: 4px;
       font-size: 14px;
@@ -88,35 +122,6 @@ export default class VArticleHeader extends Vue {
 
     & > .tags > .item:hover {
       text-decoration: underline;
-    }
-
-    & > .author {
-      display: flex;
-      align-items: center;
-      margin-top: 24px;
-    }
-
-    & > .author > .avatar {
-      width: 32px;
-      height: 32px;
-      margin-right: 6px;
-      border-radius: 2px;
-    }
-
-    & > .author > .username {
-      font-size: 14px;
-      color: $_text;
-      text-decoration: none;
-    }
-
-    & > .author > .username:hover {
-      text-decoration: underline;
-    }
-
-    & > .author > .datetime {
-      margin-left: auto;
-      font-size: 12px;
-      color: rgba($_text, 0.6);
     }
   }
 </style>
