@@ -13,10 +13,12 @@
 </script>
 
 <style lang="scss">
+  /* stylelint-disable rscss/no-descendant-combinator, no-descending-specificity, rscss/class-format */
+
   .v-article {
     & {
-      color: $_text;
       line-height: 1.5;
+      color: $_text;
     }
 
     h1 {
@@ -51,7 +53,8 @@
       font-weight: bold;
     }
 
-    h5, h6 {
+    h5,
+    h6 {
       margin-top: 35px;
       margin-bottom: 24px;
       font-size: 16px;
@@ -92,12 +95,14 @@
       text-decoration: underline;
     }
 
-    ul, ol {
+    ul,
+    ol {
       padding-left: 24px;
       margin: 24px 0;
       line-height: 1.9;
 
-      ul, ol {
+      ul,
+      ol {
         margin: 0;
       }
 
@@ -138,8 +143,8 @@
       display: block;
       margin: 24px 0;
       overflow: auto;
-      border-left: 1px solid #dddddd;
       border-collapse: collapse;
+      border-left: 1px solid #ddd;
     }
 
     tr:nth-child(odd) {
@@ -181,7 +186,8 @@
       border: 0;
     }
 
-    sub, sup {
+    sub,
+    sup {
       position: relative;
       font-size: 75%;
       line-height: 0;
@@ -205,8 +211,8 @@
     }
 
     .code-frame {
-      margin: 20px -16px;
       padding: 12px 16px;
+      margin: 20px -16px;
       color: #e3e3e3;
       background: #364549;
 

@@ -1,6 +1,8 @@
 <template>
   <div class="v-article-header">
-    <h1 class="title">{{ post.title }}</h1>
+    <h1 class="title">
+      {{ post.title }}
+    </h1>
     <div class="tags">
       <a
         v-for="tag in post.tags"
@@ -28,37 +30,37 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'nuxt-property-decorator';
-  import dayjs from "dayjs";
-  import {IQiitaPost} from "@/types/qiita";
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
+import dayjs from 'dayjs'
+import { IQiitaPost } from '@/types/qiita'
 
   @Component
-  export default class VArticleHeader extends Vue {
+export default class VArticleHeader extends Vue {
     /** ポストデータ */
     @Prop({ type: Object, required: true })
     post!: IQiitaPost;
 
     /** ユーザーネーム */
-    get username(): string {
-      const { name, id } = this.post.user;
+    get username (): string {
+      const { name, id } = this.post.user
 
       if (!name) {
-        return `@${id}`;
+        return `@${id}`
       }
 
-      return `${name} (@${id})`;
+      return `${name} (@${id})`
     }
 
     /** 投稿日時 */
     get datetime (): string {
       return dayjs(this.post.created_at).format('YYYY/MM/DD HH:mm')
     }
-  }
+}
 </script>
 
 <style lang="scss" scoped>
   .v-article-header {
-    .title {
+    & > .title {
       margin-bottom: 16px;
       font-size: 40px;
       font-weight: bold;
