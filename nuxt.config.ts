@@ -14,11 +14,15 @@ const config: Configuration = {
   css: [
     '@/assets/styles/global.scss'
   ],
+  router: {
+    mode: 'hash'
+  },
   buildModules: [
     '@nuxt/typescript-build'
   ],
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/pwa',
     '@nuxtjs/style-resources'
   ],
   plugins: [
@@ -26,6 +30,12 @@ const config: Configuration = {
   ],
   axios: {
     baseURL: 'https://qiita.com/api/v2'
+  },
+  pwa: {
+    workbox: {
+      offline: true,
+      offlineAssets: ['%STATIC_CACHE_FILES%']
+    }
   },
   styleResources: {
     scss: [

@@ -19,21 +19,21 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'nuxt-property-decorator';
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
   @Component
-  export default class SaveButton extends Vue {
+export default class SaveButton extends Vue {
     /** 保存されたポストかどうか */
-    @Prop({ type: Boolean, default: true })
-    saved!: false;
+    @Prop({ type: Boolean, default: false })
+    saved!: boolean;
 
     /** ボタンが押されたら親にイベントを伝える */
-    onButtonClick(): void {
-      const eventName = this.saved ? 'delete' : 'save';
+    onButtonClick (): void {
+      const eventName = this.saved ? 'delete' : 'save'
 
-      this.$emit(eventName);
+      this.$emit(eventName)
     }
-  }
+}
 </script>
 
 <style lang="scss" scoped>

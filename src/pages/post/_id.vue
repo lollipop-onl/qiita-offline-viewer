@@ -3,7 +3,11 @@
     <template v-if="post">
       <VArticleHeader class="header" :post="post" />
       <VArticle :html="post.rendered_body" />
-      <SaveButton class="save" />
+      <SaveButton
+        class="save"
+        @save="savePost"
+        @delete="deletePost"
+      />
     </template>
   </div>
 </template>
@@ -12,8 +16,9 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 import VArticle from '@/components/VArticle.vue'
 import VArticleHeader from '@/components/VArticleHeader.vue'
-import SaveButton from "@/components/SaveButton.vue";
+import SaveButton from '@/components/SaveButton.vue'
 import { IQiitaPost } from '@/types/qiita'
+import { postStorage } from '@/utils'
 
   @Component({
     components: {
@@ -35,6 +40,18 @@ export default class PostDetail extends Vue {
     async mounted (): Promise<void> {
       this.post = await this.$axios.$get<IQiitaPost>(`/items/${this.postId}`)
     }
+
+    /** 記事をローカルに保存する */
+    savePost () {
+      if (!this.post) {
+        return
+      }
+
+      postStorage.save(this.post)
+    }
+
+    /** 記事をローカルから削除する */
+    deletePost () {}
 }
 </script>
 

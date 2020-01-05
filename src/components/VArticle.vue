@@ -3,13 +3,13 @@
 </template>
 
 <script lang="ts">
-  import {Component, Prop, Vue} from 'nuxt-property-decorator';
+import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
   @Component
-  export default class VArticle extends Vue {
+export default class VArticle extends Vue {
     @Prop({ type: String, required: true })
     html!: string;
-  }
+}
 </script>
 
 <style lang="scss">
