@@ -13,6 +13,12 @@
         @delete="deletePost"
       />
     </template>
+    <template v-else-if="isOffline">
+      <p class="message">オフラインです</p>
+    </template>
+    <template v-else>
+      <p class="message">ページが見つかりませんでした</p>
+    </template>
   </div>
 </template>
 
@@ -112,6 +118,13 @@ export default class PostDetail extends Vue {
       position: fixed;
       right: 18px;
       bottom: 32px;
+    }
+
+    & > .message {
+      font-size: 16px;
+      line-height: 1.5;
+      color: rgba($_text, 0.6);
+      text-align: center;
     }
   }
 </style>

@@ -18,6 +18,13 @@ class PostStorage {
   }
 
   /**
+   * 保存されたポストのリスト
+   */
+  public get sortedSavedPosts (): IQiitaPost[] {
+    return Object.values(this.savedPosts)
+  }
+
+  /**
    * 保存されたポストを参照する
    */
   public get savedPosts (): Record<string, IQiitaPost> {
@@ -30,6 +37,7 @@ class PostStorage {
    */
   public async save (post: IQiitaPost): Promise<void> {
     post.rendered_body = await this.replaceImageUrlToBase64(post.rendered_body)
+    post.user.profile_image_url = OFFLINE_IMAGE
 
     Lockr.set(LocalStorageKey.SAVED_POSTS, {
       ...this.savedPosts,
