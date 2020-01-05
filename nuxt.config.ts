@@ -23,7 +23,8 @@ const config: Configuration = {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    'nuxt-client-init-module'
   ],
   plugins: [
     '@/plugins/axios-logger'

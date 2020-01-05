@@ -21,7 +21,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
-  @Component
+@Component
 export default class SaveButton extends Vue {
     /** 保存されたポストかどうか */
     @Prop({ type: Boolean, default: false })

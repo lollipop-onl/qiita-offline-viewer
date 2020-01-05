@@ -4,5 +4,6 @@
 body,
 input,
 button {
+  -webkit-font-smoothing: antialiased;
   color: $_text;
 }

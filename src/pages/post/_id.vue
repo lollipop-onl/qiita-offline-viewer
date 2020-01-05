@@ -1,10 +1,14 @@
 <template>
   <div class="page-container">
-    <template v-if="post">
-      <VArticleHeader class="header" :post="post" />
-      <VArticle :html="post.rendered_body" />
+    <template v-if="optimizedPost">
+      <VArticleHeader
+        :post="optimizedPost"
+        class="header"
+      />
+      <VArticle :html="optimizedPost.rendered_body" />
       <SaveButton
         class="save"
+        :saved="!!savedPost"
         @save="savePost"
         @delete="deletePost"
       />
@@ -13,11 +17,12 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Watch, Vue } from 'nuxt-property-decorator'
 import VArticle from '@/components/VArticle.vue'
 import VArticleHeader from '@/components/VArticleHeader.vue'
 import SaveButton from '@/components/SaveButton.vue'
 import { IQiitaPost } from '@/types/qiita'
+import { Store } from '@/store'
 import { postStorage } from '@/utils'
 
   @Component({
@@ -28,6 +33,11 @@ import { postStorage } from '@/utils'
     }
   })
 export default class PostDetail extends Vue {
+    $store!: Store
+
+    /** データキャッシュ更新用のタイムスタンプ */
+    timestamp = Date.now()
+
     /** ポストデータ */
     post: IQiitaPost | null = null;
 
@@ -36,8 +46,34 @@ export default class PostDetail extends Vue {
       return this.$route.params.id
     }
 
-    /** ライフサイクル */
-    async mounted (): Promise<void> {
+    /** Offlineかどうか */
+    get isOffline () {
+      return this.$store.state.isOffline
+    }
+
+    /** 保存されたポスト */
+    get savedPost (): IQiitaPost | void {
+      // eslint-disable-next-line no-unused-expressions
+      this.timestamp
+
+      return postStorage.restore(this.postId)
+    }
+
+    /** ポスト */
+    get optimizedPost (): IQiitaPost | void | null {
+      if (this.isOffline) {
+        return this.savedPost
+      }
+
+      return this.post
+    }
+
+    @Watch('isOffline', { immediate: true })
+    async onChangeOfflineStatus (): Promise<void> {
+      if (this.isOffline || this.post) {
+        return
+      }
+
       this.post = await this.$axios.$get<IQiitaPost>(`/items/${this.postId}`)
     }
 
@@ -48,10 +84,16 @@ export default class PostDetail extends Vue {
       }
 
       postStorage.save(this.post)
+
+      this.timestamp = Date.now()
     }
 
     /** 記事をローカルから削除する */
-    deletePost () {}
+    deletePost () {
+      postStorage.delete(this.postId)
+
+      this.timestamp = Date.now()
+    }
 }
 </script>
 

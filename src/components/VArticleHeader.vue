@@ -38,7 +38,7 @@ import { IQiitaPost } from '@/types/qiita'
 export default class VArticleHeader extends Vue {
     /** ポストデータ */
     @Prop({ type: Object, required: true })
-    post!: IQiitaPost;
+    post!: IQiitaPost
 
     /** ユーザーネーム */
     get username (): string {
