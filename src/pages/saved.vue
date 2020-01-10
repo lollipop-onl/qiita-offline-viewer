@@ -11,8 +11,8 @@
 
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator'
-import VHeading from "@/components/VHeading.vue"
-import VPost from "@/components/VPost.vue"
+import VHeading from '@/components/VHeading.vue'
+import VPost from '@/components/VPost.vue'
 import { postStorage } from '@/utils'
 
 @Component({
@@ -24,7 +24,7 @@ import { postStorage } from '@/utils'
 export default class SavedPage extends Vue {
   /** 保存されたポスト */
   get savedPosts () {
-    return postStorage.sortedSavedPosts;
+    return postStorage.sortedSavedPosts
   }
 }
 </script>

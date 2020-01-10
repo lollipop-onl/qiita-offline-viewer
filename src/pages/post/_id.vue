@@ -14,10 +14,14 @@
       />
     </template>
     <template v-else-if="isOffline">
-      <p class="message">オフラインです</p>
+      <p class="message">
+        オフラインです
+      </p>
     </template>
     <template v-else>
-      <p class="message">ページが見つかりませんでした</p>
+      <p class="message">
+        ページが見つかりませんでした
+      </p>
     </template>
   </div>
 </template>

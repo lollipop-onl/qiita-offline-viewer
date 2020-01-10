@@ -5,7 +5,9 @@
       <nuxt />
     </div>
     <div v-if="isOffline" class="offline-bar">
-      <div class="bar">Offline Mode</div>
+      <div class="bar">
+        Offline Mode
+      </div>
     </div>
   </div>
 </template>
@@ -24,7 +26,7 @@ export default class DefaultLayout extends Vue {
   $store!: Store
 
   /** オフラインかどうか */
-  get isOffline() {
+  get isOffline () {
     return this.$store.state.isOffline
   }
 }
@@ -57,7 +59,7 @@ export default class DefaultLayout extends Vue {
       height: 20px;
       padding: 0 10px;
       font-size: 11px;
-      color: #6F6F6F;
+      color: #6f6f6f;
       background: #232323;
       border-top-right-radius: 4px;
     }

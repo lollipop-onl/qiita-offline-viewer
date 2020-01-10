@@ -1,0 +1,46 @@
+{
+  "name": "ts-nuxt-sample-project",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lollipop-onl/ts-nuxt-sample-project.git",
+  "author": "lollipop-onl <lollipop@simoochee.net>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "lintjs": "eslint --ext .ts,.js,.vue .",
+    "lintjs:fix": "yarn lintjs --fix",
+    "lintcss": "stylelint \"src/**/*.{vue,scss}\"",
+    "lintcss:fix": "yarn lintcss --fix"
+  },
+  "dependencies": {
+    "@lollipop-onl/vue-typed-reactive": "^1.0.7",
+    "@lollipop-onl/vuex-typesafe-helper": "^0.2.13",
+    "@nuxt/typescript-build": "^0.5.4",
+    "@nuxtjs/axios": "^5.9.0",
+    "@nuxtjs/pwa": "^2.6.0",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "dayjs": "^1.8.18",
+    "lockr": "^0.8.5",
+    "nuxt": "^2.11.0",
+    "nuxt-client-init-module": "^0.1.7",
+    "nuxt-property-decorator": "^2.5.0",
+    "promise.allsettled": "^1.0.2",
+    "reset.css": "^2.0.2"
+  },
+  "devDependencies": {
+    "@lollipop-onl/axios-logger": "^0.1.11",
+    "@nuxt/typescript-runtime": "^0.3.5",
+    "@nuxtjs/eslint-config-typescript": "^1.0.0",
+    "@types/lockr": "^0.8.6",
+    "@types/promise.allsettled": "^1.0.2",
+    "eslint": "^6.8.0",
+    "node-sass": "^4.13.0",
+    "sass-loader": "^8.0.0",
+    "stylelint": "^12.0.1",
+    "stylelint-config-recess-order": "^2.0.3",
+    "stylelint-config-rscss": "^1.0.0",
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-scss": "^3.13.0"
+  }
+}
